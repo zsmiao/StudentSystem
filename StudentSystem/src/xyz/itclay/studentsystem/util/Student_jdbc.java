@@ -18,7 +18,7 @@ public class Student_jdbc {
     private static final String ADD_STUDENT = "insert  into tb_Student(Student_Id,Student_Name,Student_Sex,Grade,Classe,Major_Name,Department_Name) values (?,?,?,?,?,?,?)";
     private static final String DELETE_STUDENT = "delete from tb_Student where Student_Id=?";
     private static final String UPDATE_STUDENT = "update tb_Student set Student_Name=?,Student_Sex=?,Grade=?,Classe=?,Major_Name=?,Department_Name=? where Student_Id=?";
-    private static final String SHOW_STUDENT = " select  * from  tb_Student WHERE stu_id=?";
+    private static final String SHOW_STUDENT = " select  * from  tb_Student WHERE Student_Id=?";
     private static final String SHOWALL_STUDENT = "select * from tb_Student;";
 
     /**
@@ -107,13 +107,13 @@ public class Student_jdbc {
         System.out.print("请输入要更改学生的学校>>>>>");
         String stuDepart = scanner.next();
         PreparedStatement ps = conn.prepareStatement(UPDATE_STUDENT);
-        ps.setString(1, stuId);
-        ps.setString(2, stuName);
-        ps.setString(3, stuSex);
-        ps.setInt(4, stuGrade);
-        ps.setInt(5, stuClass);
-        ps.setString(6, stuMajor);
-        ps.setString(7, stuDepart);
+        ps.setString(7, stuId);
+        ps.setString(1, stuName);
+        ps.setString(2, stuSex);
+        ps.setInt(3, stuGrade);
+        ps.setInt(4, stuClass);
+        ps.setString(5, stuMajor);
+        ps.setString(6, stuDepart);
         if (ps.executeUpdate() > 0) {
             System.out.println("更改成功！");
         } else {
@@ -130,15 +130,17 @@ public class Student_jdbc {
         ps.setString(1, stuId);
         ResultSet resultSet = ps.executeQuery();
         System.out.println("**********查询结果***********");
+        System.out.println("学号\t\t  姓名\t性别\t 年级\t班级\t 专业\t\t学校");
         while (resultSet.next()) {
-            System.out.println(resultSet.getString(1) + "--" +
-                    resultSet.getString(2) + "--" +
-                    resultSet.getString(3) + "--" +
-                    resultSet.getString(4) + "--" +
-                    resultSet.getString(5) + "--" +
-                    resultSet.getString(6) + "--" +
+            System.out.println(resultSet.getString(1) + "  " +
+                    resultSet.getString(2) + " \t" +
+                    resultSet.getString(3) + " \t " +
+                    resultSet.getString(4) + " \t " +
+                    resultSet.getString(5) + " \t " +
+                    resultSet.getString(6) + "\t" +
                     resultSet.getString(7));
         }
+        resultSet.close();
     }
 
     public static void showAll() throws Exception {
@@ -146,14 +148,16 @@ public class Student_jdbc {
         PreparedStatement ps = conn.prepareStatement(SHOWALL_STUDENT);
         ResultSet resultSet = ps.executeQuery();
         System.out.println("**********查询结果***********");
+        System.out.println("学号\t\t  姓名\t性别\t 年级\t班级\t 专业\t\t学校");
         while (resultSet.next()) {
-            System.out.println(resultSet.getString(1) + "--" +
-                    resultSet.getString(2) + "--" +
-                    resultSet.getString(3) + "--" +
-                    resultSet.getString(4) + "--" +
-                    resultSet.getString(5) + "--" +
-                    resultSet.getString(6) + "--" +
+            System.out.println(resultSet.getString(1) + "  " +
+                    resultSet.getString(2) + " \t" +
+                    resultSet.getString(3) + " \t " +
+                    resultSet.getString(4) + " \t " +
+                    resultSet.getString(5) + " \t " +
+                    resultSet.getString(6) + "\t" +
                     resultSet.getString(7));
         }
+        resultSet.close();
     }
 }

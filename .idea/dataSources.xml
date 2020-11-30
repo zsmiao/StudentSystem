@@ -7,5 +7,11 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://192.168.21.22:3306/StudentSystem</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="itclay.xyz_MySQL8.0.21" uuid="d4a617e6-eaa9-48a2-9b2b-2f5c7112d057">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://106.52.122.20:3306/StudentSystem</jdbc-url>
+    </data-source>
   </component>
 </project>
