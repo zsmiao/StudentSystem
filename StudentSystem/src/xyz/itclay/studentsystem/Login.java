@@ -13,7 +13,6 @@ import static xyz.itclay.studentsystem.Options.*;
 
 public class Login {
     public static void loginIn() throws Exception {
-        Student_jdbc.connectionDatabase();
         Random random = new Random();
         Scanner scanner = new Scanner(System.in);
         int[] vc = new int[4];
